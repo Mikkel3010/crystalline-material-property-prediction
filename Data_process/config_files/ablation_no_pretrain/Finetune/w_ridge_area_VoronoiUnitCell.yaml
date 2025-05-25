@@ -1,0 +1,35 @@
+batch_size: 256
+epochs: 15
+lr: 0.00001
+weight_decay: 0.0001
+log_interval: 2
+validation_interval: 1
+val_log_interval: 1
+lambda_param: 0.0051
+preprocessor_type: VoronoiUnitCell_m_ridge
+task_name: 'matminer_dataset'
+lr_gamma: 0.1
+stepsize: 3
+dataset:
+
+  dataset_path: 'Data_process\h5py_files\Matminer_all_Voro_UnitCell\matminer\912cacd9b291093f130d975c25cdf385.h5'
+  with_voronoi_ridge_areas: True
+dataloader:
+  train_ratio: 0.95
+  val_ratio: 0.05
+  test_ratio: null
+  num_workers: 8
+  seed: 123
+
+model_params:
+  node_dim: 72
+  node_expand_dim: 128
+  edge_dim: 42 # 41 if no voronoi_area
+  edge_expand_dim: 128
+  MLP1_dim: 128
+  MLP2_dim: 64
+  fine_tune_classes: 64
+  dimensionslist:
+    - [128, 256, 128]
+    - [256, 256, 128]
+    - [256, 128, 128]

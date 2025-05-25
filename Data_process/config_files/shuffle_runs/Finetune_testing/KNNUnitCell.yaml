@@ -1,0 +1,41 @@
+do_training: False
+do_testing: True
+batch_size: 256
+epochs: 300
+lr: 0.001
+weight_decay: 0.0001
+log_interval: 2
+validation_interval: 1
+val_log_interval: 1
+lambda_param: 0.0051
+preprocessor_type: KNNUnitCell
+task_name: 'matbench_perovskites'
+task_type: 'regression'
+saved_model_path: "shuffle_Finetune_runs/matbench_perovskites/KNNUnitCell_2025-05-12_00-38-17/model_checkpoints/best_model_epoch_286.pth"
+train_val_test_ratio: [0.6, 0.2, 0.2]
+lr_gamma: 0.5
+stepsize: 30
+dataset:
+
+  dataset_path: 'Data_process/h5py_files/Matbench_matbench_perovskites_KNN_UnitCell/matbench_perovskites/1a360b52d1e67cbd6c3774724106e98f.h5'
+  with_voronoi_ridge_areas: False
+  task_name: 'matbench_perovskites'
+dataloader:
+  train_ratio: 0.95
+  val_ratio: 0.05
+  test_ratio: null
+  num_workers: 8
+  seed: 123
+
+model_params:
+  node_dim: 72
+  node_expand_dim: 128
+  edge_dim: 41 # 41 if no voronoi_area
+  edge_expand_dim: 128
+  MLP1_dim: 128
+  MLP2_dim: 64
+  fine_tune_classes: 64
+  dimensionslist:
+    - [128, 256, 128]
+    - [256, 256, 128]
+    - [256, 128, 128]
