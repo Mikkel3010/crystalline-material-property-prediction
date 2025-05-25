@@ -4,6 +4,7 @@ This repository draws upon and adapts existing implementations from the followin
 
 #### **Crystal Twin**
 Certain classes and functions in this repository are directly based on code from the Crystal Twin paper
+- 'BarlowTwinLoss'
 - `Normalizer`
 - `GaussianDistance`
 - `AtomInitializer`
